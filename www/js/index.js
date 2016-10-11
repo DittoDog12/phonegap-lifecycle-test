@@ -2,8 +2,9 @@ var paused_count =0;
 var resumed_count = 0;
 var launched_count = 0;
 
-    function onLoad() {
-        document.addEventListener("deviceready", onDeviceReady, false);
+    //On Load, create Device Ready listener
+    function onLoad() { 
+        document.addEventListener("deviceready", onDeviceReady, false); // When the application has loaded, call the onDeviceReady function
 		console.log("device ready");
     }
 	
@@ -16,11 +17,12 @@ var launched_count = 0;
 
     // device APIs are available
     //
+    // On Device ready event, create the pause and resume listeners
     function onDeviceReady() {
 		alert("device ready");
         
-		document.addEventListener("resume", onResume, false);
-		document.addEventListener("pause", onPause, false);
+		document.addEventListener("resume", onResume, false); //When app is resumed trigger onResume function
+		document.addEventListener("pause", onPause, false); //When app is paused trigger onPause function
 		
 		launched_count++;
 		updateDisplay();
@@ -34,6 +36,7 @@ var launched_count = 0;
 		updateDisplay();
     }
 	
+    // Handle Resume event
 	function onResume() {
 		alert("resume");
 		resumed_count++;
