@@ -1,6 +1,7 @@
 var paused_count =0;
 var resumed_count = 0;
 var launched_count = 0;
+var boop_count = 0;
 
     //On Load, create Device Ready listener
     function onLoad() { 
@@ -12,6 +13,7 @@ var launched_count = 0;
 		$("#launched").text("Application launched: " + launched_count);
 		$("#resumed").text("Application paused: " + paused_count);
 		$("#paused").text("Application resumed: " + resumed_count);
+		$("#boop").text("Application resumed: " + boop_count);
 	}
 
 
@@ -41,4 +43,12 @@ var launched_count = 0;
 		alert("resume");
 		resumed_count++;
 		updateDisplay();
+    }
+    
+    // Alert Event
+    function bleepBoop(){
+        alert("Beep Boop");
+        boop_count++;
+        updateDisplay();
+        console.log("Boop Beep");
     }
