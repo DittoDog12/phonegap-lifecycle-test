@@ -1,7 +1,5 @@
-var paused_count =0;
-var resumed_count = 0;
-var launched_count = 0;
-var boop_count = 0;
+var bloop_count = 0;
+var _ItemCount = 0
 
     //On Load, create Device Ready listener
     function onLoad() { 
@@ -10,10 +8,8 @@ var boop_count = 0;
     }
 	
 	function updateDisplay() {
-		$("#launched").text("Application launched: " + launched_count);
-		$("#resumed").text("Application paused: " + paused_count);
-		$("#paused").text("Application resumed: " + resumed_count);
-		$("#boop").text("Application resumed: " + boop_count);
+		$("#Items").text("Application launched: " + _ItemCount);
+		$("#bloop").text("Application resumed: " + bloop_count);
 	}
 
 
@@ -21,34 +17,29 @@ var boop_count = 0;
     //
     // On Device ready event, create the pause and resume listeners
     function onDeviceReady() {
-		alert("device ready");
+		window.localStorage.setItem("Tablet", "Shield");
+        _ItemCount++;
+		window.localStorage.setItem("Phone", "iPhone");
+        _ItemCount++;
+		window.localStorage.setItem("Keyboard", "Dell");
+        _ItemCount++;
+		window.localStorage.setItem("Mouse", "Also Dell");
+        _ItemCount++;
+		window.localStorage.setItem("Keys", "There"); 
+        _ItemCount++;
         
-		document.addEventListener("resume", onResume, false); //When app is resumed trigger onResume function
-		document.addEventListener("pause", onPause, false); //When app is paused trigger onPause function
-		
-		launched_count++;
-		updateDisplay();
+        window.localstorage.getItem("Tablet");
+        updateDisplay();
     }
 
-    // Handle the pause event
-    //
-    function onPause() {
-		alert("pause");
-		paused_count++;
-		updateDisplay();
-    }
-	
-    // Handle Resume event
-	function onResume() {
-		alert("resume");
-		resumed_count++;
-		updateDisplay();
-    }
+
+
     
-    // Alert Event
-    function bleepBoop(){
-        alert("Beep Boop");
-        boop_count++;
+    
+    // Caboose Event
+    function bleepBloop(){
+        alert("Bleep Bloop");
+        bloop_count++;
         updateDisplay();
-        console.log("Boop Beep");
+        console.log("Bloop Bleep");
     }
